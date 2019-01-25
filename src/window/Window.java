@@ -1,13 +1,20 @@
+package window;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class Window extends  JFrame{
 
+    public static JLabel textPosRightTopLabel = new JLabel("Значения");
+    public static JTextField textField = new JTextField(20);
+    public static JButton button = new JButton("Test button");
+
+    public static Container container;
 
 
-        public Window(){
-            super("My First Window"); //Заголовок окна
+    public Window(){
+            super("My First window.Window"); //Заголовок окна
             setBounds(100, 100, 200, 200); //Если не выставить
             //размер и положение
             //то окно будет мелкое и незаметное
@@ -19,17 +26,19 @@ public class Window extends  JFrame{
             //закрытии окна закрывалась и программа,
             //иначе она останется висеть в процессах
 
-            JTextField textField = new JTextField(20);
-            getContentPane().add(textField, BorderLayout.NORTH);
-            JLabel textPosRightTopLabel = new JLabel("Значения");
-            getContentPane().add(textPosRightTopLabel);
+             container =this.getContentPane();
+
+            container.setLayout(new FlowLayout());
+
+            container.add(textPosRightTopLabel);
+            container.add(textField);
+            container.add(button);
 
 
-            JButton button = new JButton("Test button");
+
             ActionListener actionListener = new MyActionListener();
 
             button.addActionListener(actionListener);
-            getContentPane().add(button);
 
 
         }
